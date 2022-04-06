@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace TencentCloud\Thpc\V20211109\Models;
+namespace TencentCloud\Thpc\V20220401\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
@@ -60,14 +60,10 @@ false（默认）：发送正常请求，通过检查后直接创建实例
  * @method void setClusterName(string $ClusterName) 设置集群显示名称。
  * @method StorageOption getStorageOption() 获取集群存储选项
  * @method void setStorageOption(StorageOption $StorageOption) 设置集群存储选项
- * @method array getLoginNode() 获取已废弃。
-指定登录节点。
- * @method void setLoginNode(array $LoginNode) 设置已废弃。
-指定登录节点。
- * @method integer getLoginNodeCount() 获取已废弃。
-指定登录节点的数量。默认取值：0。取值范围：0～10。
- * @method void setLoginNodeCount(integer $LoginNodeCount) 设置已废弃。
-指定登录节点的数量。默认取值：0。取值范围：0～10。
+ * @method LoginNode getLoginNode() 获取指定登录节点。
+ * @method void setLoginNode(LoginNode $LoginNode) 设置指定登录节点。
+ * @method integer getLoginNodeCount() 获取指定登录节点的数量。默认取值：0。取值范围：0～10。
+ * @method void setLoginNodeCount(integer $LoginNodeCount) 设置指定登录节点的数量。默认取值：0。取值范围：0～10。
  * @method array getTags() 获取创建集群时同时绑定的标签对说明。
  * @method void setTags(array $Tags) 设置创建集群时同时绑定的标签对说明。
  */
@@ -154,14 +150,12 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     public $StorageOption;
 
     /**
-     * @var array 已废弃。
-指定登录节点。
+     * @var LoginNode 指定登录节点。
      */
     public $LoginNode;
 
     /**
-     * @var integer 已废弃。
-指定登录节点的数量。默认取值：0。取值范围：0～10。
+     * @var integer 指定登录节点的数量。默认取值：0。取值范围：0～10。
      */
     public $LoginNodeCount;
 
@@ -191,10 +185,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 <li>NIS：NIS域名字服务。
      * @param string $ClusterName 集群显示名称。
      * @param StorageOption $StorageOption 集群存储选项
-     * @param array $LoginNode 已废弃。
-指定登录节点。
-     * @param integer $LoginNodeCount 已废弃。
-指定登录节点的数量。默认取值：0。取值范围：0～10。
+     * @param LoginNode $LoginNode 指定登录节点。
+     * @param integer $LoginNodeCount 指定登录节点的数量。默认取值：0。取值范围：0～10。
      * @param array $Tags 创建集群时同时绑定的标签对说明。
      */
     function __construct()
@@ -277,12 +269,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         }
 
         if (array_key_exists("LoginNode",$param) and $param["LoginNode"] !== null) {
-            $this->LoginNode = [];
-            foreach ($param["LoginNode"] as $key => $value){
-                $obj = new LoginNode();
-                $obj->deserialize($value);
-                array_push($this->LoginNode, $obj);
-            }
+            $this->LoginNode = new LoginNode();
+            $this->LoginNode->deserialize($param["LoginNode"]);
         }
 
         if (array_key_exists("LoginNodeCount",$param) and $param["LoginNodeCount"] !== null) {
