@@ -20,17 +20,25 @@ use TencentCloud\Common\AbstractModel;
 /**
  * DescribeClusterStorageOption返回参数结构体
  *
+ * @method StorageOptionOverview getStorageOption() 获取集群存储选项信息概览。
+ * @method void setStorageOption(StorageOptionOverview $StorageOption) 设置集群存储选项信息概览。
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
 class DescribeClusterStorageOptionResponse extends AbstractModel
 {
     /**
+     * @var StorageOptionOverview 集群存储选项信息概览。
+     */
+    public $StorageOption;
+
+    /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     public $RequestId;
 
     /**
+     * @param StorageOptionOverview $StorageOption 集群存储选项信息概览。
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -46,6 +54,11 @@ class DescribeClusterStorageOptionResponse extends AbstractModel
         if ($param === null) {
             return;
         }
+        if (array_key_exists("StorageOption",$param) and $param["StorageOption"] !== null) {
+            $this->StorageOption = new StorageOptionOverview();
+            $this->StorageOption->deserialize($param["StorageOption"]);
+        }
+
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
             $this->RequestId = $param["RequestId"];
         }
