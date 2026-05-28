@@ -18,18 +18,16 @@ namespace TencentCloud\Thpc\V20230321\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * 描述GooseFS挂载信息
+ * COS挂载信息
  *
  * @method string getLocalPath() 获取<p>文件系统本地挂载路径。</p>
  * @method void setLocalPath(string $LocalPath) 设置<p>文件系统本地挂载路径。</p>
- * @method string getRemotePath() 获取<p>文件系统远程挂载路径。</p>
- * @method void setRemotePath(string $RemotePath) 设置<p>文件系统远程挂载路径。</p>
- * @method array getMasters() 获取<p>文件系统master的ip和端口，此参数和FileSystemId互斥。</p>
- * @method void setMasters(array $Masters) 设置<p>文件系统master的ip和端口，此参数和FileSystemId互斥。</p>
- * @method string getFileSystemId() 获取<p>GooseFS的文件ID；此参数和Masters 互斥。</p>
- * @method void setFileSystemId(string $FileSystemId) 设置<p>GooseFS的文件ID；此参数和Masters 互斥。</p>
+ * @method string getRemotePath() 获取<p>COS桶地址，可以在COS桶详情页查看。</p>
+ * @method void setRemotePath(string $RemotePath) 设置<p>COS桶地址，可以在COS桶详情页查看。</p>
+ * @method string getMountParamsOption() 获取<p>cosfs2挂载工具支持的参数。</p>
+ * @method void setMountParamsOption(string $MountParamsOption) 设置<p>cosfs2挂载工具支持的参数。</p>
  */
-class GooseFSOption extends AbstractModel
+class CosOption extends AbstractModel
 {
     /**
      * @var string <p>文件系统本地挂载路径。</p>
@@ -37,25 +35,19 @@ class GooseFSOption extends AbstractModel
     public $LocalPath;
 
     /**
-     * @var string <p>文件系统远程挂载路径。</p>
+     * @var string <p>COS桶地址，可以在COS桶详情页查看。</p>
      */
     public $RemotePath;
 
     /**
-     * @var array <p>文件系统master的ip和端口，此参数和FileSystemId互斥。</p>
+     * @var string <p>cosfs2挂载工具支持的参数。</p>
      */
-    public $Masters;
-
-    /**
-     * @var string <p>GooseFS的文件ID；此参数和Masters 互斥。</p>
-     */
-    public $FileSystemId;
+    public $MountParamsOption;
 
     /**
      * @param string $LocalPath <p>文件系统本地挂载路径。</p>
-     * @param string $RemotePath <p>文件系统远程挂载路径。</p>
-     * @param array $Masters <p>文件系统master的ip和端口，此参数和FileSystemId互斥。</p>
-     * @param string $FileSystemId <p>GooseFS的文件ID；此参数和Masters 互斥。</p>
+     * @param string $RemotePath <p>COS桶地址，可以在COS桶详情页查看。</p>
+     * @param string $MountParamsOption <p>cosfs2挂载工具支持的参数。</p>
      */
     function __construct()
     {
@@ -78,12 +70,8 @@ class GooseFSOption extends AbstractModel
             $this->RemotePath = $param["RemotePath"];
         }
 
-        if (array_key_exists("Masters",$param) and $param["Masters"] !== null) {
-            $this->Masters = $param["Masters"];
-        }
-
-        if (array_key_exists("FileSystemId",$param) and $param["FileSystemId"] !== null) {
-            $this->FileSystemId = $param["FileSystemId"];
+        if (array_key_exists("MountParamsOption",$param) and $param["MountParamsOption"] !== null) {
+            $this->MountParamsOption = $param["MountParamsOption"];
         }
     }
 }
